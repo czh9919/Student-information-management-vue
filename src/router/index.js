@@ -21,7 +21,7 @@ const routes = [{
     },
     {
         // 会匹配所有路径
-        path: '/*',
+        path: '*',
         name: 'H404',
         component: () =>
             import ('../views/H404.vue')

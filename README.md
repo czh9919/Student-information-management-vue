@@ -1,4 +1,4 @@
-# interest
+# Student-information-management-vue
 
 ## Project setup
 ```
