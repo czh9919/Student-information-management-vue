@@ -20,6 +20,12 @@ const routes = [{
             import ( /* webpackChunkName: "about" */ '../views/About.vue')
     },
     {
+        path: '/login',
+        name: 'Login',
+        component: () =>
+            import ('../views/Login.vue')
+    },
+    {
         // 会匹配所有路径
         path: '*',
         name: 'H404',
