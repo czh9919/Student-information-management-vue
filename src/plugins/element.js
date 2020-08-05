@@ -3,3 +3,10 @@ import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.use(Element)
+Vue.prototype.openLoading = function() {
+    const loading = this.$loading({ // 声明一个loading对象
+        lock: true, // 是否锁屏
+        body: true,
+    });
+    return loading;
+}

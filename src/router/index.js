@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-
+import StuInfo from '../components/StuInfo'
 
 Vue.use(VueRouter)
 
@@ -24,6 +24,11 @@ const routes = [{
         name: 'Login',
         component: () =>
             import ('../views/Login.vue')
+    },
+    {
+        path: '/stuinfo',
+        name: StuInfo,
+        component: StuInfo
     },
     {
         // 会匹配所有路径
