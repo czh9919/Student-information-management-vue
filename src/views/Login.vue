@@ -37,7 +37,7 @@ export default {
     login_button:function(){
       this.$axios({
         method: 'post',
-        url: 'http://localhost:9033/login',
+        url: '/users/login',
         data:{
           name:this.input,
           password:this.password
