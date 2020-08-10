@@ -19,8 +19,8 @@
           </el-row>
           <el-row>
             <el-col :span="24">
-              <el-form-item label="学号" :label-width="'120px'" prop="StuNum">
-                <el-input v-model="userFrom.StuNum"></el-input>
+              <el-form-item label="学号" :label-width="'120px'" prop="stunum">
+                <el-input v-model="userFrom.stunum"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -58,7 +58,7 @@ export default {
       userFrom:{
         id: '',
         name: '',
-        StuNum: '',
+        stunum: '',
         //headImg: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
         // imageUrl: '',
       },
@@ -81,11 +81,11 @@ export default {
           const loading = this.openLoading();
           this.$axios({
               method: 'post',
-              url: '/users/query',
+              url: '/users/update',
               data:{
                   id:this.userFrom.id,
                   name:this.userFrom.name,
-                  StuName:this.userFrom.StuNum
+                  StuName:this.userFrom.stunum
               }
           }).then(() => {
             loading.close();

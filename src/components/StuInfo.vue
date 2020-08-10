@@ -21,7 +21,7 @@
     max-height="250">
     <el-table-column
       fixed
-      prop="ID"
+      prop="id"
       label="ID"
       width="150">
     </el-table-column>
@@ -46,8 +46,8 @@
       </template>
     </el-table-column>
   </el-table>
-    <AddUpdateUserInfoDialog :type="'update'" ref="updateInfoDialog" />
-    <AddUpdateUserInfoDialog :type="'add'" ref="addInfoDialog"/>
+    <AddUpdateStuInfoDialog :type="'update'" ref="updateInfoDialog" />
+    <AddUpdateStuInfoDialog :type="'add'" ref="addInfoDialog"/>
   </div>
 </template>
 
@@ -55,6 +55,9 @@
 import AddUpdateStuInfoDialog from '../components/AddUpdateStuInfoDialog'
 export default {
   name:'StuInfo',
+  components: {
+    AddUpdateStuInfoDialog
+  },
   data () {//自己定义的属性,所有控件用到的属性必须在这里定义
     return {
       formData: {
@@ -63,26 +66,10 @@ export default {
         }
       },
         tableData: [{
-          ID: '2016-05-03',
+          id: '2016-05-03',
           name: '王小虎',
           stunum: '123'
-        }, {
-          ID: '2016-05-03',
-          name: '王小虎',
-          stunum: '123'
-        },{
-          ID: '2016-05-03',
-          name: '王小虎',
-          stunum: '123'
-        },{
-          ID: '2016-05-03',
-          name: '王小虎',
-          stunum: '123'
-        },{
-          ID: '2016-05-03',
-          name: '王小虎',
-          stunum: '123'
-        },],
+        }],
       loading: {//是否显示正在加载中的小圈圈
         table: false,//table加载遮罩
         del: false,//删除按钮加载遮罩
@@ -103,10 +90,9 @@ export default {
         }).then((data) => {
           this.tableData.length=data.data.length;
           for(let key in data.data){
-            this.tableData[key].ID = data.data[key].id;
+            this.tableData[key].id = data.data[key].id;
             this.tableData[key].name=data.data[key].name;
             this.tableData[key].stunum=data.data[key].studentnumber;
-            console.info(this.tableData[key].ID);
           }
           
           this.loading.table = false;
@@ -116,7 +102,8 @@ export default {
         });
     },
     update: function(index,rows){//修改按钮
-      let data = Object.assign({},rows[index]);
+      let data = Object.assign({},rows);
+      console.log(data);
       this.$refs.updateInfoDialog.openDialog(data);
     },
     query: function(index,rows){//
@@ -133,7 +120,7 @@ export default {
           method: 'post',
           url: '/users/delete',
           data:{
-            "id":this.tableData[index].ID
+            "id":this.tableData[index].id
           }
         }).then(() => {
           this.loadData();
@@ -146,9 +133,7 @@ export default {
   created: function() {//初始化组件方法
     this.loadData();
   },
-  components:{
-    AddUpdateStuInfoDialog:AddUpdateStuInfoDialog,
-  }
+
 }
 
 </script>
