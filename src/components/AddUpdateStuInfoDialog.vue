@@ -19,8 +19,8 @@
           </el-row>
           <el-row>
             <el-col :span="24">
-              <el-form-item label="学号" :label-width="'120px'" prop="stunum">
-                <el-input v-model="userFrom.stunum"></el-input>
+              <el-form-item label="学号" :label-width="'120px'" prop="studentnumber">
+                <el-input v-model="userFrom.studentnumber"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -58,14 +58,14 @@ export default {
       userFrom:{
         id: '',
         name: '',
-        stunum: '',
+        studentnumber: '',
         //headImg: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
         // imageUrl: '',
       },
       
       showUpUser: false,
       userFromRole:{
-        StuNum:[
+        studentnumber:[
           {required: true, message: '请输入学号', tigger: "blur"}
         ],
         name:[
@@ -85,7 +85,7 @@ export default {
               data:{
                   id:this.userFrom.id,
                   name:this.userFrom.name,
-                  StuName:this.userFrom.stunum
+                  studentnumber:this.userFrom.studentnumber
               }
           }).then(() => {
             loading.close();
@@ -94,6 +94,7 @@ export default {
             this.$message.success('修改成功!');
           }).catch((data) => {
             loading.close();
+            alert(data);
             this.$message.error(data.msg);
           })
         }

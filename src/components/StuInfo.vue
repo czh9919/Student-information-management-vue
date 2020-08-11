@@ -28,17 +28,17 @@
     <el-table-column
       prop="name"
       label="姓名"
-      width="120">
+      width="150">
     </el-table-column>
     <el-table-column
-      prop="stunum"
+      prop="studentnumber"
       label="学号"
-      width="120">
+      width="150">
     </el-table-column>
     <el-table-column
       fixed="right"
       label="操作"
-      width="300">
+      width="230">
       <template slot-scope="scope">
         <el-button size="mini" split-button type="primary" @click="()=>query(scope.$index, scope.row)">查看</el-button>
         <el-button size="mini" split-button type="primary" @click="()=>update(scope.$index, scope.row)">修改</el-button>
@@ -46,6 +46,7 @@
       </template>
     </el-table-column>
   </el-table>
+    <AddUpdateStuInfoDialog :type="'query'" ref="queryInfoDialog" />
     <AddUpdateStuInfoDialog :type="'update'" ref="updateInfoDialog" />
     <AddUpdateStuInfoDialog :type="'add'" ref="addInfoDialog"/>
   </div>
@@ -68,7 +69,7 @@ export default {
         tableData: [{
           id: '2016-05-03',
           name: '王小虎',
-          stunum: '123'
+          studentnumber: '123'
         }],
       loading: {//是否显示正在加载中的小圈圈
         table: false,//table加载遮罩
@@ -88,26 +89,21 @@ export default {
             "name":name
           }
         }).then((data) => {
-          this.tableData.length=data.data.length;
-          for(let key in data.data){
-            this.tableData[key].id = data.data[key].id;
-            this.tableData[key].name=data.data[key].name;
-            this.tableData[key].stunum=data.data[key].studentnumber;
-          }
-          
+          this.tableData=data.data;
           this.loading.table = false;
         }).catch((data) => {
           this.loading.table = false;
+          alert(data);
           this.$message.error(data.msg);
         });
     },
     update: function(index,rows){//修改按钮
       let data = Object.assign({},rows);
-      console.log(data);
       this.$refs.updateInfoDialog.openDialog(data);
     },
     query: function(index,rows){//
-      this.$refs.updateInfoDialog.openDialog(rows[index]);
+      let data = Object.assign({},rows);
+      this.$refs.queryInfoDialog.openDialog(data);
     },
     //新增用户方法
     add:function(){
