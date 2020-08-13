@@ -67,9 +67,9 @@ export default {
         }
       },
         tableData: [{
-          id: '2016-05-03',
-          name: '王小虎',
-          studentnumber: '123'
+          id: '',
+          name: '',
+          studentnumber: ''
         }],
       loading: {//是否显示正在加载中的小圈圈
         table: false,//table加载遮罩
@@ -127,7 +127,7 @@ export default {
     }
   },
   created: function() {//初始化组件方法
-    this.loadData();
+    this.loadData("");
   },
 
 }
