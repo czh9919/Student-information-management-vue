@@ -46,9 +46,9 @@
       </template>
     </el-table-column>
   </el-table>
-    <AddUpdateStuInfoDialog :type="'query'" ref="queryInfoDialog" />
-    <AddUpdateStuInfoDialog :type="'update'" ref="updateInfoDialog" />
-    <AddUpdateStuInfoDialog :type="'add'" ref="addInfoDialog"/>
+    <AddUpdateStuInfoDialog @reloadData="()=>loadData()" :type="'query'" ref="queryInfoDialog" />
+    <AddUpdateStuInfoDialog @reloadData="()=>loadData()" :type="'update'" ref="updateInfoDialog" />
+    <AddUpdateStuInfoDialog @reloadData="()=>loadData()" :type="'add'" ref="addInfoDialog"/>
   </div>
 </template>
 

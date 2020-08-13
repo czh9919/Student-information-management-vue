@@ -5,13 +5,6 @@
         <el-col :span="12">
           <el-row>
             <el-col :span="24">
-              <el-form-item label="ID" :label-width="'120px'" prop="id">
-                <el-input v-model="userFrom.id"></el-input>
-              </el-form-item>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="24">
               <el-form-item label="姓名" :label-width="'120px'" prop="name">
                 <el-input v-model="userFrom.name"></el-input>
               </el-form-item>
@@ -48,13 +41,17 @@ export default {
   },
   data () {//自己定义的属性,所有控件用到的属性必须在这里定义
     let title = "新增用户";
+    let url="/users/insert"
     if (this.type === "update") {
       title = "修改用户";
+      url="/users/update"
     } else if(this.type === "query"){
       title = "查看用户";
+      url="/users/update"
     }
     return {
       title,
+      url,
       userFrom:{
         id: '',
         name: '',
@@ -81,7 +78,7 @@ export default {
           const loading = this.openLoading();
           this.$axios({
               method: 'post',
-              url: '/users/update',
+              url: this.url,
               data:{
                   id:this.userFrom.id,
                   name:this.userFrom.name,

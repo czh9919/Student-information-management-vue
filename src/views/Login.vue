@@ -43,7 +43,8 @@ export default {
           password:this.password
         }
       }).then(response=>{
-        alert(response) //success
+        alert("success") //success
+        response;
       }).catch(response=>{
         alert(response) //failed
       })
