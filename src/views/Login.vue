@@ -9,10 +9,10 @@
       <el-row class="log input">
         <el-form class="login-form">
           <el-form-item>
-            <el-input name="name" v-model="input" placeholder="请输入用户名"></el-input>
+            <el-input name="name" v-model="input" placeholder="请输入用户名" prefix-icon="el-icon-s-custom"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-input v-model="password" type="password" placeholder="Password" prefix-icon="fas fa-lock"></el-input>
+            <el-input v-model="password" type="password" placeholder="Password" prefix-icon="el-icon-lock"></el-input>
           </el-form-item>
           <p>
             <el-button v-on:click="login_button">登录</el-button>
@@ -43,8 +43,8 @@ export default {
           password:this.password
         }
       }).then(response=>{
-        alert("success") //success
-        response;
+        console.log(response.data.token);
+        this.$store.commit({type:"setToken",token:response.data.token})
       }).catch(response=>{
         alert(response) //failed
       })

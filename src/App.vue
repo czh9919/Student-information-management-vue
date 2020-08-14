@@ -1,10 +1,13 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/stuinfo">学生信息</router-link>
+      <el-menu  class="el-menu-demo" mode="horizontal" router="true" >
+      <el-menu-item index="/" >Home</el-menu-item>
+      <el-menu-item index="/about" >About</el-menu-item>
+      <el-menu-item index="/login" >Login</el-menu-item>
+      <el-menu-item index="/stuinfo" >学生信息</el-menu-item>
+      <el-menu-item index="/stuinfo" >个人信息</el-menu-item>
+    </el-menu>
     </div>
     <router-view/>
   </div>

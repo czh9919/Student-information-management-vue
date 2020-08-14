@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import StuInfo from '../components/StuInfo'
-
+import store from '../store'
+import { checkToken } from '../utils/httpRequest'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -42,5 +43,13 @@ const routes = [{
 const router = new VueRouter({
     routes
 })
-
+router.beforeEach((to, from, next) => {
+    store.commit("getToken");
+    let token = store.state.token;
+    checkToken(token);
+    let isAuthenticated = store.state.ans;
+    console.log(isAuthenticated);
+    if ((to.name !== "Login" /* || to.name !== "Register" */ ) && !isAuthenticated) next({ path: '/login' });
+    else { next(); }
+})
 export default router
