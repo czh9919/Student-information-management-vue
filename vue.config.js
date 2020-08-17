@@ -1,6 +1,6 @@
 module.exports = {
     assetsDir: 'resource',
     devServer: {
-        proxy: 'http://localhost:9033'
+        proxy: 'http://dbd039.cn:9033'
     }
 }

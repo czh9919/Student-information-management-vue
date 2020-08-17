@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import StuInfo from '../components/StuInfo'
+import StuInfo from '../views/StuInfo'
 import store from '../store'
 import { checkToken } from '../utils/httpRequest'
 Vue.use(VueRouter)
@@ -30,7 +30,17 @@ const routes = [{
         path: '/stuinfo',
         name: StuInfo,
         component: StuInfo
+    }, {
+        path: '/register',
+        name: 'Register',
+        component: () =>
+            import ('../views/Register.vue')
     },
+    // {
+    //     path: '/myinfo',
+    //     name: MyInfo,
+    //     component: MyInfo
+    // },
     {
         // 会匹配所有路径
         path: '*',

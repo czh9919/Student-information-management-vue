@@ -15,6 +15,7 @@
     </el-row>
 
   <el-table
+    v-loading="loading.table"
     :data="tableData"
     :span="24"
     style="width: 60%; margin:auto;"
@@ -75,7 +76,6 @@ export default {
         table: false,//table加载遮罩
         del: false,//删除按钮加载遮罩
         upConfirm: false,//删除按钮加载遮罩
-        resetPwd: false,//重置密码
       }
     }
   },

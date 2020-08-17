@@ -7,6 +7,7 @@
       <el-menu-item index="/login" >Login</el-menu-item>
       <el-menu-item index="/stuinfo" >学生信息</el-menu-item>
       <el-menu-item index="/stuinfo" >个人信息</el-menu-item>
+      <el-menu-item index="/register" >注册</el-menu-item>
     </el-menu>
     </div>
     <router-view/>
